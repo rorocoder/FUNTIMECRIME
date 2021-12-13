@@ -1,0 +1,47 @@
+.square {
+  height: 100px;
+  width: 100px;
+  background-color: blue;
+  border-radius: 10px;
+}
+.squareImage{
+  position: relative;
+  left: 110px;
+  bottom: 100px;
+
+  height: 250px;
+  width: 250px;
+
+  background-color: red;
+
+  border-radius: 10px;
+  border-style: solid;
+  border-color: blue;
+
+  background-repeat: no-repeat;
+  background-image: url(https://media.cylex.us.com/companies/2977/4413/logo/logo.jpg);
+}
+.squareImage2{
+  position: relative;
+  left: 375px;
+  bottom: 356px;
+
+  height: 250px;
+  width: 250px;
+
+  background-color: red;
+
+  border-radius: 10px;
+  border-style: solid;
+  border-color: blue;
+
+  background-repeat: no-repeat;
+  background-image: url(https://media.cylex.us.com/companies/2977/4413/logo/logo.jpg);
+}
+.boxText{
+  padding-left: 5px;
+  padding-top: 2px;
+  color: white;
+  font-size: 20px;
+
+}
