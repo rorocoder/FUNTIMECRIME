@@ -33,7 +33,7 @@
 
   border-radius: 10px;
   border-style: solid;
-  border-color: blue;
+  border-color: green;
 
   background-repeat: no-repeat;
   background-image: url(https://media.cylex.us.com/companies/2977/4413/logo/logo.jpg);
@@ -44,4 +44,46 @@
   color: white;
   font-size: 20px;
 
+}
+
+
+.lit{
+  background-color: #003300
+}
+
+.simonButton{
+  border: black;
+  font-size: 75px;
+  padding: 50px 50px;
+  float: left;
+  border: 3px solid black;
+  padding-bottom: 50px;
+  color: white;
+  font-family: Arial;
+}
+
+.greenSquareLit{
+  background-color: #34FF89;
+}
+.redSquareLit{
+  background-color: #FF8383;
+}
+.blueSquareLit{
+  background-color: #83FFF0;
+}
+.yellowSquareLit{
+  background-color: #FFE552;
+}
+
+.greenSquare{
+  background-color: #4CAF50;
+}
+.redSquare{
+  background-color: #F54A4A;
+}
+.blueSquare{
+  background-color: #4A7EF5;
+}
+.yellowSquare{
+  background-color: #FCD80C;
 }

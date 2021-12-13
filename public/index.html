@@ -10,12 +10,60 @@
   </head>
 
   <body>
+    <div>
       <div class="square">
         <p class="boxText"> This is the target -> </p>
       </div>
       <div class="squareImage"></div>
       <div class="squareImage2"></div>
+    </div>
+
+    <div>
+      <button class="simonButton greenSquare greenSquareLit" id="greenButton">Green</button>
+      <div class="simonButton redSquare redSquareLit" id="redButton">Red</div>
+      <div class="simonButton yellowSquare yellowSquareLit" id="yellowButton">Yellow</div>
+      <div class="simonButton blueSquare blueSquareLit" id="blueButton">Blue</div>
+
+    <script>
+      var green = document.getElementById("greenButton");
+      green.addEventListener("click", function() {
+        green.classList.remove("greenSquare");
+      });
+
+      var red = document.getElementById("redButton");
+      red.addEventListener("click", function() {
+        red.classList.remove("redSquare");
+      });
+
+      var yellow = document.getElementById("yellowButton");
+      yellow.addEventListener("click", function() {
+        yellow.classList.remove("yellowSquare");
+      });
+
+      var blue = document.getElementById("blueButton");
+      blue.addEventListener("click", function() {
+        blue.classList.remove("blueSquare");
+      });
 
 
-    </body>
+    </script>
+    </div>
+
+
+  </body>
+
+  <script>
+    document.getElementById("greenButton").addEventListener("click", function() {
+      console.log("im green lol");
+    });
+  </script>
+
+  <script>
+    var greenButton = document.getElementById("greenButton");
+    greenButton.classList.remove()
+    function lightUp(){
+
+    }
+    addEventListener(, lightUp);
+  </script>
 </html>
