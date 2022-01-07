@@ -54,7 +54,7 @@
 .simonButton{
   border: black;
   font-size: 75px;
-  padding: 50px 50px;
+  padding: 100px 100px;
   float: left;
   border: 3px solid black;
   padding-bottom: 50px;
@@ -63,27 +63,27 @@
 }
 
 .greenSquareLit{
-  background-color: #34FF89;
+  background-color: #7BF962;
 }
 .redSquareLit{
   background-color: #FF8383;
 }
 .blueSquareLit{
-  background-color: #83FFF0;
+  background-color: #27B3EC;
 }
 .yellowSquareLit{
   background-color: #FFE552;
 }
 
 .greenSquare{
-  background-color: #4CAF50;
+  background-color: #3B9922;
 }
 .redSquare{
-  background-color: #F54A4A;
+  background-color: #AE1B1B;
 }
 .blueSquare{
-  background-color: #4A7EF5;
+  background-color: #1B4EAE;
 }
 .yellowSquare{
-  background-color: #FCD80C;
+  background-color: #B8B312;
 }

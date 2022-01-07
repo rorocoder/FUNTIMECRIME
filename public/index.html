@@ -9,7 +9,7 @@
   </style>
   </head>
 
-  <body>
+  <body style = "background-color: #1BBDC1">
     <div>
       <div class="square">
         <p class="boxText"> This is the target -> </p>
@@ -19,51 +19,210 @@
     </div>
 
     <div>
-      <button class="simonButton greenSquare greenSquareLit" id="greenButton">Green</button>
-      <div class="simonButton redSquare redSquareLit" id="redButton">Red</div>
-      <div class="simonButton yellowSquare yellowSquareLit" id="yellowButton">Yellow</div>
-      <div class="simonButton blueSquare blueSquareLit" id="blueButton">Blue</div>
-
-    <script>
-      var green = document.getElementById("greenButton");
-      green.addEventListener("click", function() {
-        green.classList.remove("greenSquare");
-      });
-
-      var red = document.getElementById("redButton");
-      red.addEventListener("click", function() {
-        red.classList.remove("redSquare");
-      });
-
-      var yellow = document.getElementById("yellowButton");
-      yellow.addEventListener("click", function() {
-        yellow.classList.remove("yellowSquare");
-      });
-
-      var blue = document.getElementById("blueButton");
-      blue.addEventListener("click", function() {
-        blue.classList.remove("blueSquare");
-      });
+      <h1>SIMON SAYS</h1>
+      <button id = "startButton">Start</button>
+      <h2 id = "pressStart">Press Start</h2>
+      <h2 id = "highScore">High Score: 0</h2>
 
 
-    </script>
+      <button class="simonButton greenSquare greenSquareLit" id="greenButton"></button>
+      <div class="simonButton redSquare redSquareLit" id="redButton"></div>
+      <div class="simonButton yellowSquare yellowSquareLit" id="yellowButton"></div>
+      <div class="simonButton blueSquare blueSquareLit" id="blueButton"></div>
+
+      <script>
+
+      var userChoices = [];
+      var computerChoices = [];
+      var isAlive = true;
+      var counter = 1;
+      var choiceCounter = 0;
+      var highScore;
+
+      if(window.localStorage.getItem("highScore") == null){
+        highScore = 0;
+        window.localStorage.setItem('highScore', 0);
+      }
+      else{
+        highScore = window.localStorage.getItem("highScore");
+      }
+
+
+      var h = document.getElementById("highScore");
+      h.innerHTML = "High Score: " + window.localStorage.getItem("highScore");
+
+
+        async function squareToggle(colorString) {
+          var square = document.getElementById("" + colorString + "Button");
+          square.classList.toggle("" + colorString + "Square");
+        }
+
+          var green = document.getElementById("greenButton");
+          green.addEventListener("click", function() {
+            colorChoice("green");
+            console.log("clickGreen");
+          });
+
+          var red = document.getElementById("redButton");
+          red.addEventListener("click", function() {
+            colorChoice("red");
+            console.log("clickRed");
+          });
+
+          var yellow = document.getElementById("yellowButton");
+          yellow.addEventListener("click", function() {
+            colorChoice("yellow");
+            console.log("clickYellow");
+          });
+
+          var blue = document.getElementById("blueButton");
+          blue.addEventListener("click", function() {
+            colorChoice("blue");
+            console.log("clickBlue");
+          });
+
+          var start = document.getElementById("startButton");
+          start.addEventListener("click",  function() {
+            var x = document.getElementById("pressStart");
+            x.innerHTML = "ROUND #1";
+            isAlive = true;
+            startNextRepeat();
+
+
+
+            //var counter = 1;
+            //while(isAlive){
+              //lightUpRepeat(counter);
+              //counter++;
+              //console.log("!!!!done with one repeat!!!!")
+              //lightUpRepeat(counter);
+              //isAlive = false;
+
+            })
+
+
+
+          var colorArray = ['green','red','yellow', 'blue'];
+
+          function colorChoice(color){
+
+            squareToggle(color);
+            setTimeout(() => {squareToggle(color)}, 600);
+
+            userChoices.push(color)
+            choiceCounter++;
+            console.log("user choices = " + userChoices);
+            checkChoices();
+          }
+
+          async function startNextRepeat(){
+            lightUpRepeat(counter);
+
+
+          }
+
+          function checkChoices(){
+            console.log("choicecounter = " + choiceCounter)
+            console.log("counter = " + counter)
+            if(choiceCounter == counter){
+              checkLists();
+            }
+            else{
+              if(computerChoices[computerChoices-1]!=userChoices[computerChoices-1]){
+                endGame();
+              }
+            }
+          }
+
+
+          function checkLists(){
+            console.log("checking lists")
+            for(var i = 0; i<counter; i++){
+              if(computerChoices[i]!=userChoices[i]){
+                console.log("ending game");
+                endGame(); //game over
+              }
+            }
+            //move on
+            if(isAlive){
+              choiceCounter = 0;
+              userChoices = [];
+              counter++;
+              lightUpRepeat(counter);
+            }
+
+          }
+
+          function endGame(){
+
+            if(counter > window.localStorage.getItem("highScore")){
+              var j = document.getElementById("highScore");
+              j.innerHTML = "High Score: " + counter;
+            }
+            highScore = counter;
+            window.localStorage.setItem('highScore', counter);
+
+            choiceCounter = 0;
+            userChoices = [];
+            counter = 1;
+            computerChoices = [];
+            isAlive = false;
+
+            var x = document.getElementById("pressStart");
+            x.innerHTML = "GAME OVER";
+
+
+
+
+          }
+
+          function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+
+          function lightUp(colorString){
+            console.log("lighting up " + colorString);
+            squareToggle(colorString);
+            setTimeout(() => {squareToggle(colorString)}, 2000);
+          }
+
+          function lightUpRepeat(number){
+            var x = document.getElementById("pressStart");
+            x.innerHTML = "ROUND #" + counter;
+            console.log("here");
+            console.log("counter = " + counter);
+            //for(var i = 0; i<number;i++){
+            var i = 0;
+            var myInterval = setInterval(function(){
+              console.log("i =  " + i);
+
+
+              var color = "";
+              if(i == number-1){ //new one
+                console.log("new square lighting up")
+
+                var colorIndex = getRandomInt(4);
+                color = colorArray[colorIndex];
+                computerChoices.push(color);
+                console.log("color index is" + colorIndex);
+              }
+              else{ //old one
+                color = computerChoices[i];
+                console.log("color choice is" + color);
+
+              }
+              i++;
+
+              lightUp(color);
+            }, 5000);
+
+            setTimeout(() => {clearInterval(myInterval)}, 5000*(number+1));
+
+
+          }
+
+      </script>
+
     </div>
-
-
   </body>
-
-  <script>
-    document.getElementById("greenButton").addEventListener("click", function() {
-      console.log("im green lol");
-    });
-  </script>
-
-  <script>
-    var greenButton = document.getElementById("greenButton");
-    greenButton.classList.remove()
-    function lightUp(){
-
-    }
-    addEventListener(, lightUp);
-  </script>
 </html>
